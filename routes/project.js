@@ -1,5 +1,6 @@
 'use strict'
 
+//carga de modulos
 var express = require('express');
 var ProjectController = require('../controllers/project');
 
@@ -8,6 +9,7 @@ var router = express.Router();
 var multipart =  require('connect-multiparty');
 var multipartMiddleware = multipart({ uploadDir: './uploads'});
 
+//definicion de rutas 
 router.get('/home', ProjectController.home);
 router.post('/test', ProjectController.test);
 router.post('/save-project', ProjectController.saveProject);

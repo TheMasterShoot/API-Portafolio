@@ -17,7 +17,7 @@ console.log(plantilla);
 console.log('hola mundo con nodejs');
 
 /*
-    para tener preparado nuestro servidor node es necesario
+    para tener preparado nuestro servidor Node es necesario
     instalar las siguientes dependencias:
     
     npm init: nos crea un package.json

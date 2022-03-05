@@ -1,8 +1,10 @@
 'use strict'
 
+//carga de modulos
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+//definicion de nuestro modelo
 var ProjectSchema = Schema({
     name: String,
     description: String,

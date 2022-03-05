@@ -1,8 +1,10 @@
 'use strict'
 
+//carga de modulos
 var Project = require('../models/project');
 var fs = require('fs');
 
+//controladores
 var controller = {
     home: function(req, res){
         return res.status(200).send({
@@ -16,6 +18,7 @@ var controller = {
 
     },
 
+    //metodos
     saveProject: function(req, res){
         var project = new Project();
 
@@ -42,7 +45,7 @@ var controller = {
     getProject: function(req, res){
         var projectId = req.params.id;
 
-        if(projectId == null) return res.status(404).send({ message: 'El proyecto no existe'});
+        if(projectId == null) return res.status(404).send({ message: 'El proyecto no existe' });
 
         Project.findById(projectId, (err, project) => {
             if(err) return res.status(500).send({
@@ -52,9 +55,7 @@ var controller = {
                 message: 'El proyecto no existe'
             });
 
-            return res.status(200).send({
-                project
-            });
+            return res.status(200).send({ project });
         });
     },
 
@@ -68,7 +69,7 @@ var controller = {
                 message: 'No hay proyectos que mostrar'
             });
 
-            return res.status(200).send({projects});
+            return res.status(200).send({ projects });
         })
     },
 
@@ -99,9 +100,7 @@ var controller = {
                 message: 'No se puede eliminar este proyecto'
             });
 
-            return res.status(200).send({
-                project: projectRemoved
-            });
+            return res.status(200).send({ project: projectRemoved });
         });
     },
 
@@ -119,13 +118,13 @@ var controller = {
             if(fileExt == 'png' || fileExt =='jpg' || fileExt == 'jpeg' || fileExt == 'gif') {
 
                 Project.findByIdAndUpdate(projectId, {image: fileName}, {new: true}, (err, projectUpdated) => {
-                if (err) return res.status(200).send({
-                    message: 'La imagen no se ha subido'
-                });
+                    if (err) return res.status(200).send({
+                        message: 'La imagen no se ha subido'
+                    });
 
-                if (!projectUpdated) return res.status(404).send({
-                    message: 'El proyecto no existe'
-                });
+                    if (!projectUpdated) return res.status(404).send({
+                        message: 'El proyecto no existe'
+                    });
                 
                     return res.status(200).send({
                         files: projectUpdated
@@ -140,9 +139,7 @@ var controller = {
             }
             
         } else {
-            return res.status(200).send({
-                message: fileName
-            });
+            return res.status(200).send({ message: fileName });
         }
     }
 };

@@ -2,8 +2,9 @@
 
 var mongoose = require('mongoose');
 var app = require('./app');
-var port = 3700;
+var port = 3700; //puerto en que corre el backend
 
+//conexion a base de datos
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/portafolio')
     .then(() => {
